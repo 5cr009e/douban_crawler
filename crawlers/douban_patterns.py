@@ -16,7 +16,7 @@ class DoubanPatterns:
     }
 
     post_process_methods ={
-        'Title': lambda titles: list(map(lambda t: t.replace("\\xa0",""), titles)) if len(titles) == 2 else [titles[0], " "],
+        'Title': lambda titles: list(map(lambda t: t.replace("\\xa0","").replace("/", ""), titles)) if len(titles) == 2 else [titles[0], " "],
         'Inq': lambda inq: inq[0].replace(".", "").replace("\\xa0", "") if len(inq) != 0 else ' ',
         'Bd': lambda bd: re.sub('<br(\s+)?/>(\s+)?', " ", bd[0]).strip().replace("\\xa0","") if len(bd) >= 1 else ' '
     }
